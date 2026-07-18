@@ -4,5 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     hamburgerBtn.addEventListener('click', () => {
         navMenu.classList.toggle('active');
+        hamburgerBtn.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+    });
+
+    navMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+        });
     });
 });
